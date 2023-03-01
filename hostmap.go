@@ -16,10 +16,10 @@ type HostMap struct {
 }
 
 func New(db *sql.DB, 
-		load func() (map[string]string, error), 
-		add func(v1, v2 string) error, 
-		del func(v1 string) error, 
-		modify func(v1, v2 string) error) *HostMap {
+		load func(db *sql.DB) (map[string]string, error), 
+		add func(db *sql.DB, v1, v2 string) error, 
+		del func(db *sql.DB, v1 string) error, 
+		modify func(db *sql.DB, v1, v2 string) error) *HostMap {
 
 	return &HostMap{
 		DB: db,
